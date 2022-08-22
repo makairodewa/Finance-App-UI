@@ -1,4 +1,5 @@
 import 'package:finance/constants/style.dart';
+import 'package:finance/pages/activity_page.dart';
 import 'package:finance/widget/activity.dart';
 import 'package:finance/widget/balance.dart';
 import 'package:finance/widget/menu_body.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(textTheme: GoogleFonts.montserratTextTheme()),
-      home: const HomePage(),
+      home: const ActivityPage(),
     );
   }
 }
