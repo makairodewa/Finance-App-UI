@@ -3,7 +3,7 @@ import 'package:finance/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class TopBarWidget extends StatelessWidget {
-  const TopBarWidget({
+ const TopBarWidget({
     Key? key,
   }) : super(key: key);
 
@@ -13,7 +13,7 @@ class TopBarWidget extends StatelessWidget {
       width: double.infinity,
       height: 137,
       decoration: BoxDecoration(
-          color: caccent2,
+          color: cAccent2,
           boxShadow: [
             BoxShadow(
                 color: ink03.withOpacity(.5),
@@ -55,7 +55,9 @@ class TopBarWidget extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.menu_rounded))
+            IconButton(onPressed: () {
+              return scaffoldKey.currentState!.openEndDrawer();
+            }, icon: const Icon(Icons.menu_rounded))
           ],
         ),
       ),

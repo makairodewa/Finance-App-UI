@@ -1,3 +1,4 @@
+import 'package:finance/screen/activity_screen.dart';
 import 'package:flutter/material.dart';
 
 class MenuBodyWidget extends StatelessWidget {
@@ -10,8 +11,15 @@ class MenuBodyWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        SizedBox(
-            height: 92, width: 60, child: Image.asset('assets/img/g_14.png')),
+        GestureDetector(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ActivityScreen(),
+              )),
+          child: SizedBox(
+              height: 92, width: 60, child: Image.asset('assets/img/g_14.png')),
+        ),
         SizedBox(
             height: 92, width: 60, child: Image.asset('assets/img/Vector.png')),
         SizedBox(
