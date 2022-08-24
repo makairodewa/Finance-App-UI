@@ -1,14 +1,12 @@
 import 'package:finance/constants/style.dart';
 import 'package:finance/widget/custom_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class ActivityScreen extends StatelessWidget {
   const ActivityScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -22,7 +20,7 @@ class ActivityScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.person,
                 color: ink02,
               ),
@@ -57,7 +55,7 @@ class ActivityScreen extends StatelessWidget {
                     child: Row(
                       children: const [
                         Padding(
-                          padding:  EdgeInsets.only(left: 17, right: 19),
+                          padding: EdgeInsets.only(left: 17, right: 19),
                           child: CircleAvatar(
                             backgroundColor: ink07,
                             radius: 30,
@@ -86,34 +84,34 @@ class ActivityScreen extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        CustomText(
-                          text: "Recents",
+                        const CustomText(
+                          text: "Recent",
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
                           width: 50,
                           height: 2,
-                          color: ink01,
+                          color: cActive,
                         )
                       ],
                     ),
                     Column(
                       children: [
-                        CustomText(
+                        const CustomText(
                             text: "Contacts",
                             fontSize: 14,
                             fontWeight: FontWeight.w400),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
                           width: 50,
                           height: 2,
-                          color: ink01,
+                          color: ink02,
                         ),
                       ],
                     ),
@@ -122,16 +120,13 @@ class ActivityScreen extends StatelessWidget {
               ),
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 44.5),
-                  child: Column(
-                    children: [
-                      buildContacts("Deborah Sanchez"),
-                      buildContacts("Melanie Ward"),
-                      buildContacts("Adrienne Huffman"),
-                      buildContacts("Emily Ibarra"),
-                      buildContacts("Evan Harper"),
-                      buildContacts("Daniel Ferrell"),
-                    ],
-                  ))
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const ScrollPhysics(),
+                    itemCount: 10,
+                    itemBuilder: (context, index) =>
+                        buildContacts("User ${index + 1}", index),
+                  )),
             ],
           ),
         ),
@@ -139,17 +134,17 @@ class ActivityScreen extends StatelessWidget {
     );
   }
 
-  ListTile buildContacts(String text) {
+  ListTile buildContacts(String text, int index) {
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 10),
+      contentPadding: const EdgeInsets.symmetric(vertical: 10),
       onTap: () {},
       horizontalTitleGap: 10,
-      leading: const CircleAvatar(
+      leading: CircleAvatar(
         radius: 25,
         backgroundImage:
-            NetworkImage("https://randomuser.me/api/portraits/men/17.jpg"),
+            NetworkImage("https://randomuser.me/api/portraits/men/1$index.jpg"),
       ),
-      trailing: Icon(Icons.more_horiz),
+      trailing: const Icon(Icons.more_horiz),
       title: CustomText(text: text),
     );
   }

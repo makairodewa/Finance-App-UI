@@ -3,7 +3,7 @@ import 'package:finance/widget/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class TopBarWidget extends StatelessWidget {
- const TopBarWidget({
+  const TopBarWidget({
     Key? key,
   }) : super(key: key);
 
@@ -31,7 +31,12 @@ class TopBarWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             const CircleAvatar(
-              maxRadius: 25,
+              maxRadius: 30,
+              backgroundImage: NetworkImage(
+                'https://randomuser.me/api/portraits/men/1.jpg',
+                scale: 1,
+
+              ),
             ),
             const SizedBox(
               width: 15,
@@ -55,9 +60,11 @@ class TopBarWidget extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            IconButton(onPressed: () {
-              return scaffoldKey.currentState!.openEndDrawer();
-            }, icon: const Icon(Icons.menu_rounded))
+            IconButton(
+                onPressed: () {
+                  return scaffoldKey.currentState!.openEndDrawer();
+                },
+                icon: const Icon(Icons.more_horiz))
           ],
         ),
       ),
